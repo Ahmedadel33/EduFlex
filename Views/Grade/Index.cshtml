@@ -1,0 +1,41 @@
+﻿@model List<EduFlex.Models.Grade>
+
+<div class="container">
+    <div class="row pt-4 pb-3">
+        <div class="col-6">
+            <h2 class="text-primary">Grades</h2>
+        </div>
+        <div class="col-6 text-end">
+            <a asp-controller="Grade" asp-action="Create" class="btn btn-primary">
+                <i class="bi bi-plus-square-fill"></i> Create a Grade
+            </a>
+        </div>
+    </div>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Student</th>
+                <th>Course</th>
+                <th>Grade</th>
+                <th>Grading Date</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var grade in Model)
+            {
+                <tr>
+                    <td>@grade.Student?.FirstName @grade.Student?.LastName</td>
+                    <td>@grade.Course?.Name</td>
+                    <td>@grade.Value</td>
+                    <td>@grade.GradingDate.ToShortDateString()</td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@grade.Id" class="btn btn-warning">Edit</a>
+                        <a asp-action="Delete" asp-route-id="@grade.Id" class="btn btn-danger">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

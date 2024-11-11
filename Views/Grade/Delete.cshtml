@@ -1,0 +1,17 @@
+﻿@model EduFlex.Models.Grade
+
+<h2>Delete Grade</h2>
+
+<h4>Are you sure you want to delete this grade?</h4>
+<div>
+    <h5>Student: @Model.Student?.FirstName @Model.Student?.LastName</h5>
+    <p>Course: @Model.Course?.Name</p>
+    <p>Grade Value: @Model.Value</p>
+    <p>Grading Date: @Model.GradingDate.ToShortDateString()</p>
+</div>
+
+<form asp-action="Delete">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <a asp-controller="Grade" asp-action="Index" class="btn btn-secondary">Cancel</a>
+</form>

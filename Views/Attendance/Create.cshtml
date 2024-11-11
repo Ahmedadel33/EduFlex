@@ -1,0 +1,35 @@
+﻿@model EduFlex.Models.Attendance
+
+<h2>Create Attendance</h2>
+
+<form asp-action="Create" method="post">
+    <div class="form-group">
+        <label asp-for="StudentId"></label>
+        <select asp-for="StudentId" class="form-control" asp-items="@(new SelectList(ViewBag.Students, "Id", "FirstName"))"></select>
+        <span asp-validation-for="StudentId" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="CourseId"></label>
+        <select asp-for="CourseId" class="form-control" asp-items="@(new SelectList(ViewBag.Courses, "Id", "Name"))"></select>
+        <span asp-validation-for="CourseId" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Date"></label>
+        <input asp-for="Date" class="form-control" type="date" />
+        <span asp-validation-for="Date" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="IsPresent"></label>
+        <select asp-for="IsPresent" class="form-control">
+            <option value="true">Yes</option>
+            <option value="false">No</option>
+        </select>
+        <span asp-validation-for="IsPresent" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Create</button>
+    <a asp-controller="Attendance" asp-action="Index" class="btn btn-secondary">Cancel</a>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

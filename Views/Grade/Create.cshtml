@@ -1,0 +1,32 @@
+﻿@model EduFlex.Models.Grade
+
+<h2>Create Grade</h2>
+
+<form asp-action="Create" method="post">
+    <div class="form-group">
+        <label asp-for="StudentId"></label>
+        <select asp-for="StudentId" class="form-control" asp-items="@(new SelectList(ViewBag.Students, "Id", "FirstName"))"></select>
+        <span asp-validation-for="StudentId" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="CourseId"></label>
+        <select asp-for="CourseId" class="form-control" asp-items="@(new SelectList(ViewBag.Courses, "Id", "Name"))"></select>
+        <span asp-validation-for="CourseId" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Value"></label>
+        <input asp-for="Value" class="form-control" />
+        <span asp-validation-for="Value" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="GradingDate"></label>
+        <input asp-for="GradingDate" class="form-control" type="date" />
+        <span asp-validation-for="GradingDate" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Create</button>
+    <a asp-controller="Grade" asp-action="Index" class="btn btn-secondary">Cancel</a>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
